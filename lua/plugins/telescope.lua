@@ -11,7 +11,8 @@ return {
       "debugloop/telescope-undo.nvim",
       "ahmedkhalf/project.nvim",
       "cljoly/telescope-repo.nvim",
-      "stevearc/aerial.nvim",
+      "rishabhjain9191/telescope-monorepos",
+      -- "stevearc/aerial.nvim",
       "AckslD/nvim-neoclip.lua",
       "camgraff/telescope-tmux.nvim",
     },
@@ -28,7 +29,7 @@ return {
         desc = "List",
       },
       -- Telescope aerial
-      { "<leader>vo", "<cmd>Telescope aerial<cr>", desc = "Outline" },
+      -- { "<leader>vo", "<cmd>Telescope aerial<cr>", desc = "Outline" },
       -- Telescope Undotree
       { "<leader>U", "<cmd>Telescope undo<cr>", desc = "Undotree" },
       -- Telescope Neoclip
@@ -36,6 +37,8 @@ return {
       -- Telescope tmux
       { "<leader>ts", "<cmd>Telescope tmux sessions<cr>", desc = "Tmux sessions" },
       { "<leader>tw", "<cmd>Telescope tmux windows<cr>", desc = "Tmux windows" },
+      -- Telescope monorepo
+      { "<leader>mr", "<cmd>Telescope monorepos<cr>", desc = "Monorepo" },
     },
     config = function()
       local telescope = require("telescope")
@@ -119,7 +122,8 @@ return {
       telescope.load_extension("bookmarks")
       telescope.load_extension("project")
       telescope.load_extension("projects")
-      telescope.load_extension("aerial")
+      telescope.load_extension("monorepos")
+      -- telescope.load_extension("aerial")
       telescope.load_extension("media_files")
       telescope.load_extension("file_browser")
       telescope.load_extension("undo")
@@ -127,10 +131,10 @@ return {
       telescope.load_extension("tmux")
     end,
   },
-  {
-    "stevearc/aerial.nvim",
-    config = true,
-  },
+  -- {
+  --   "stevearc/aerial.nvim",
+  --   config = true,
+  -- },
   {
     "ahmedkhalf/project.nvim",
     config = function()

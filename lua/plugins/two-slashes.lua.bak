@@ -10,7 +10,7 @@ return {
   {
     "marilari88/twoslash-queries.nvim",
     event = "LspAttach",
-    keys = { "<C-kk>", "<cmd>InspectTwoslashQueries<cr>", desc = "Inspect twoslash queries" },
+    keys = { "<C-kk>", "<cmd><cr>", desc = "Inspect twoslash queries" },
     config = function()
       require("lazyvim.util").on_attach(function(client, buffer)
         require("twoslash-queries").attach(client, buffer)
