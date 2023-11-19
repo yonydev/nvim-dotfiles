@@ -1,6 +1,6 @@
 return {
   {
-    "windwp/nvim-spectre",
+    "nvim-pack/nvim-spectre",
     keys = function()
       return {
         { "<leader>Sr", "<cmd>lua require('spectre').open()<cr>", desc = "Replace in Files (Spectre)" },

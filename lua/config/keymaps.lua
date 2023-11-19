@@ -19,9 +19,6 @@ map("i", "jj", "<ESC>", { noremap = true, silent = true })
 -- No Highlight
 map("n", "<leader>h", "<cmd>nohlsearch<CR>", { noremap = true, silent = true })
 
--- Two Slashes
-map("n", "<C-k><C-k>", "<cmd>InspectTwoslashQueries<CR>", {})
-
 -- Trouble
 map(
   "n",

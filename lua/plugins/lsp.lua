@@ -9,21 +9,21 @@ return {
       keys[#keys + 1] = { "gr", "<cmd>Lspsaga finder ref<cr>" }
     end,
   },
-  {
-    "VidocqH/lsp-lens.nvim",
-    opts = {
-      enable = true,
-      include_declaration = false, -- Reference include declaration
-      sections = { -- Enable / Disable specific request
-        definition = false,
-        references = true,
-        implementation = true,
-      },
-      ignore_filetype = {
-        "prisma",
-      },
-    },
-  },
+  -- {
+  --   "VidocqH/lsp-lens.nvim",
+  --   opts = {
+  --     enable = true,
+  --     include_declaration = false, -- Reference include declaration
+  --     sections = { -- Enable / Disable specific request
+  --       definition = false,
+  --       references = true,
+  --       implementation = true,
+  --     },
+  --     ignore_filetype = {
+  --       "prisma",
+  --     },
+  --   },
+  -- },
   {
     "mhanberg/output-panel.nvim",
     event = "VeryLazy",

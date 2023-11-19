@@ -8,7 +8,7 @@ return {
         { "<leader>bp", "<cmd>BufferLineCyclePrev<cr>", desc = "Previous" },
         { "<leader>bn", "<cmd>BufferLineCycleNext<cr>", desc = "Next" },
         -- { "<leader>bp", "<cmd>BufferLineTogglePin<cr>", desc = "Toggle pin" },
-        { "<leader>be", "<cmd>BufferLinePickClose<cr>", desc = "Pick which buffer to close" },
+        { "<leader>bE", "<cmd>BufferLinePickClose<cr>", desc = "Pick which buffer to close" },
         { "<leader>bh", "<cmd>BufferLineCloseLeft<cr>", desc = "Close all to the left" },
         { "<leader>bl", "<cmd>BufferLineCloseRight<cr>", desc = "Close all to the right" },
         -- { "<leader>bP", "<cmd>BufferLineGroupClose ungrouped<cr>", desc = "Delete non-pinned buffers" },

@@ -12,6 +12,7 @@ return {
       "ahmedkhalf/project.nvim",
       "cljoly/telescope-repo.nvim",
       "rishabhjain9191/telescope-monorepos",
+      "ThePrimeagen/git-worktree.nvim",
       -- "stevearc/aerial.nvim",
       "AckslD/nvim-neoclip.lua",
       "camgraff/telescope-tmux.nvim",
@@ -39,6 +40,17 @@ return {
       { "<leader>tw", "<cmd>Telescope tmux windows<cr>", desc = "Tmux windows" },
       -- Telescope monorepo
       { "<leader>mr", "<cmd>Telescope monorepos<cr>", desc = "Monorepo" },
+      -- Telescope git-worktree
+      {
+        "<leader>gw",
+        "<cmd>lua require('telescope').extensions.git_worktree.git_worktrees()<cr>",
+        desc = "Git worktree",
+      },
+      {
+        "<leader>gW",
+        "<cmd>lua require('telescope').extensions.git_worktree.create_git_worktree()<cr>",
+        desc = "Create Git worktree",
+      },
     },
     config = function()
       local telescope = require("telescope")
@@ -128,6 +140,7 @@ return {
       telescope.load_extension("file_browser")
       telescope.load_extension("undo")
       telescope.load_extension("neoclip")
+      telescope.load_extension("git_worktree")
       telescope.load_extension("tmux")
     end,
   },
