@@ -30,10 +30,20 @@ return {
     --   table.insert(
     --     opts.adapters,
     --     require("neotest-jest")({
-    --       jestCommand = "npm test --",
-    --       jestConfigFile = "custom.jest.config.ts",
+    --       jestConfigFile = function()
+    --         local file = vim.fn.expand("%:p")
+    --         if string.find(file, "/packages/") then
+    --           return string.match(file, "(.-/[^/]+/)src") .. "jest.config.ts"
+    --         end
+    --
+    --         return vim.fn.getcwd() .. "/jest.config.ts"
+    --       end,
     --       env = { CI = true },
     --       cwd = function()
+    --         local file = vim.fn.expand("%:p")
+    --         if string.find(file, "/packages/") or string.find(file, "/apps/") then
+    --           return string.match(file, "(.-/[^/]+/)src")
+    --         end
     --         return vim.fn.getcwd()
     --       end,
     --     })
@@ -41,34 +51,33 @@ return {
     --   table.insert(opts.adapters, require("neotest-vitest"))
     -- end,
     opts = function(_, opts)
-      table.insert(
-        opts.adapters,
-        require("neotest-jest")({
-          -- jestCommand = function()
-          --   local file = vim.fn.expand("%:p")
-          --   if string.find(file, "/packages/") or string.find(file, "/apps/") then
-          --     return "test" -- Change this to "jest" or the actual Jest runner command
-          --   end
-          --   return "test" -- Change this to "jest" or the actual Jest runner command
-          -- end,
-          jestConfigFile = function()
-            local file = vim.fn.expand("%:p")
-            if string.find(file, "/packages/") then
-              return string.match(file, "(.-/[^/]+/)src") .. "jest.config.ts"
-            end
+      local neotestJestConfig = {
+        jestConfigFile = function()
+          local file = vim.fn.expand("%:p")
+          local packagePath = string.match(file, "(.-/packages/[^/]+)/")
 
-            return vim.fn.getcwd() .. "/jest.config.ts"
-          end,
-          env = { CI = true },
-          cwd = function()
-            local file = vim.fn.expand("%:p")
-            if string.find(file, "/packages/") or string.find(file, "/apps/") then
-              return string.match(file, "(.-/[^/]+/)src")
-            end
-            return vim.fn.getcwd()
-          end,
-        })
-      )
+          if packagePath then
+            return packagePath .. "/jest.config.ts"
+          end
+
+          return vim.fn.getcwd() .. "/jest.config.ts"
+        end,
+        env = { CI = true },
+        cwd = function()
+          local file = vim.fn.expand("%:p")
+          local packagePath = string.match(file, "(.-/packages/[^/]+)/")
+
+          if packagePath then
+            return packagePath
+          elseif string.find(file, "/apps/") then
+            return string.match(file, "(.-/[^/]+/)src")
+          end
+
+          return vim.fn.getcwd()
+        end,
+      }
+
+      table.insert(opts.adapters, require("neotest-jest")(neotestJestConfig))
       table.insert(opts.adapters, require("neotest-vitest"))
     end,
   },

@@ -17,6 +17,7 @@ require("lazy").setup({
     { import = "lazyvim.plugins.extras.lang.elixir" },
     { import = "lazyvim.plugins.extras.lang.python" },
     { import = "lazyvim.plugins.extras.lang.docker" },
+    { import = "lazyvim.plugins.extras.lang.markdown" },
     { import = "lazyvim.plugins.extras.lang.rust" },
     { import = "lazyvim.plugins.extras.ui.mini-animate" },
     { import = "lazyvim.plugins.extras.coding.copilot" },
@@ -27,7 +28,7 @@ require("lazy").setup({
     { import = "lazyvim.plugins.extras.dap.core" },
     -- import/override with your plugins
     { import = "plugins" },
-    -- { import = "plugins.data-science" },
+    { import = "plugins.data-science" },
     { import = "plugins.markdown-notes" },
   },
   defaults = {

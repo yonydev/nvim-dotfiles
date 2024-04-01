@@ -2,6 +2,7 @@ return {
   -- REMAPED LSP KEYBINDINGS
   {
     "neovim/nvim-lspconfig",
+    opts = { inlay_hints = { enable = true } },
     init = function()
       local keys = require("lazyvim.plugins.lsp.keymaps").get()
       -- Change keymaps for Lspsaga keymaps
@@ -122,5 +123,16 @@ return {
     },
     opts = { lsp = { auto_attach = true } },
     keys = { { "<leader>vo", "<cmd>Navbuddy<cr>", desc = "NavBuddy" } },
+  },
+  {
+    "OlegGulevskyy/better-ts-errors.nvim",
+    event = { "LspAttach" },
+    dependencies = { "MunifTanjim/nui.nvim" },
+    opts = {
+      keymaps = {
+        toggle = "<leader>dd",
+        go_to_definition = "<leader>dx",
+      },
+    },
   },
 }

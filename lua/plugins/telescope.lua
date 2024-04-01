@@ -3,7 +3,6 @@ return {
     "nvim-telescope/telescope.nvim",
     dependencies = {
       { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
-      "dhruvmanila/browser-bookmarks.nvim",
       "nvim-lua/plenary.nvim",
       "nvim-telescope/telescope-file-browser.nvim",
       "nvim-telescope/telescope-project.nvim",
@@ -21,7 +20,6 @@ return {
     keys = {
       { "<leader>fr", "<cmd>Telescope file_browser<cr>", desc = "Browser" },
       { "<leader>ps", "<cmd>Telescope repo list<cr>", desc = "Search" },
-      { "<leader>fB", "<cmd>Telescope bookmarks<cr>", desc = "📓Bookmarks" },
       {
         "<leader>pp",
         function()
@@ -65,7 +63,6 @@ return {
           ["?"] = actions_layout.toggle_preview,
         },
       }
-
       local opts = {
         pickers = {
           find_files = {
@@ -123,15 +120,10 @@ return {
               },
             },
           },
-          bookmarks = {
-            selected_browser = "chrome",
-            url_open_command = "xdg-open",
-          },
         },
       }
       telescope.setup(opts)
       telescope.load_extension("fzf")
-      telescope.load_extension("bookmarks")
       telescope.load_extension("project")
       telescope.load_extension("projects")
       telescope.load_extension("monorepos")
