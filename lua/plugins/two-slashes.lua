@@ -10,7 +10,9 @@ return {
         },
       },
     },
-    dependencies = { "marilari88/twoslash-queries.nvim" },
+    dependencies = {
+      "marilari88/twoslash-queries.nvim",
+    },
   },
   -- {
   --   "marilari88/twoslash-queries.nvim",
